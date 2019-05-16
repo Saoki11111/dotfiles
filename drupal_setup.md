@@ -16,13 +16,16 @@
   - `docker-compose up`
 - ブラウザで
   - `http://localhost へアクセス`
+  - 環境に応じて `docker-compose.override.yml`を修正する必要がある。
 - セットアップを省略したいのでコマンドでまとめて実行
   - `docker-compose exec php drush -y --root="/var/www/html" site-install standard --site-name="Drupal on Docker" --account-name="drupal" --account-pass="drupal" --db-url="mysql://drupal:drupal@db/drupal" --locale=ja`
+  - 10分くらいかかる。
+  - `おめでとうございます。Drupal[status]のインストールが完了しました。` と表示されたら初期セットアップ完了
 - Drupal 8の場合は以下も実行
   - `docker-compose exec php drush -y config-set system.theme admin bartik`
-- ログイン
-  - un: `drupal`
-  - pw: `drupal`
+- ログイン(右上のログインボタンから)
+  - ユーザ名: `drupal`
+  - パスワード: `drupal`
 - ユーザ管理は　ユーザー　→　役割　から設定する。
 
 #### SEE ALSO
