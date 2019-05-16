@@ -9,6 +9,8 @@
 - mac-terminal上で
   - `cd wordpress`
   - `docker-compose up -d`
+  - `localhost:8001`
+    - dokcer-compose.ymlで設定したport
 - セットアップについて参照
   - https://qiita.com/maimax/items/5090fd37f9832fe3c5fd
   - https://www.kagoya.jp/howto/wordpress/wordpress_kanri/
