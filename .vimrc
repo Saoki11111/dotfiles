@@ -36,6 +36,7 @@ noremap <S-h> ^
 noremap <S-j> }
 noremap <S-k> {
 noremap <S-l> $
+noremap gr gT
 
 " ;でコマンド入力
 noremap : ;
