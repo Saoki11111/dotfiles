@@ -14,13 +14,13 @@
   - `cd volumes/drupal`
   - `curl https://ftp.drupal.org/files/projects/drupal-8.7.0-rc1.tar.gz | tar zx --strip=1 -C .`
   - `docker-compose up`
-- ブラウザで
-  - `http://localhost へアクセス`
-  - 環境に応じて `docker-compose.override.yml`を修正する必要がある。
 - セットアップを省略したいのでコマンドでまとめて実行
   - `docker-compose exec php drush -y --root="/var/www/html" site-install standard --site-name="Drupal on Docker" --account-name="drupal" --account-pass="drupal" --db-url="mysql://drupal:drupal@db/drupal" --locale=ja`
   - 10分くらいかかる。
   - `おめでとうございます。Drupal[status]のインストールが完了しました。` と表示されたら初期セットアップ完了
+  - ブラウザで
+    - `http://localhost へアクセス`
+    - 環境に応じて `docker-compose.override.yml`を修正する必要がある。
 - Drupal 8の場合は以下も実行
   - `docker-compose exec php drush -y config-set system.theme admin bartik`
 - ログイン(右上のログインボタンから)
