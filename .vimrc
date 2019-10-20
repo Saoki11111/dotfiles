@@ -203,6 +203,3 @@ set wildmenu wildmode=list:longest,full
 " syntastic execution rubocop
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
-
-" dbext profiles
-let g:dbext_default_profile_ysp = 'type=MYSQL:host=127.0.0.1:user=root:passwd=:dbname=ysp_cms_development'
