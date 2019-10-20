@@ -5,114 +5,79 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-" vim: foldmethod=marker
-"シンタックスハイライトを有効にする。
+" allow syntax high-light
 filetype plugin indent on
 syntax enable
 
-" leaderを設定
+" use space for <Leader>
 let mapleader = "\<Space>"
-" 一行選択
 noremap <Leader>v 0v$h
-
-" NERDTreeのショートカット
 nnoremap T :NERDTree<cr>
-" Agのショートカット
-nnoremap <Space>a :Ag<cr>
-" fzfのショートカット
-nnoremap <Space>f :FZF<cr>
-" 行番号表示
-nnoremap <Space>q :set number<cr>
-nnoremap <Space>w :set nonumber<cr>
-" Buffers
-nnoremap <Space>b :Buffers<cr>
-" 現在のファイルをvimタブで開く
-nnoremap <Space>t :tabe %<cr>
+nnoremap <Leader>a :Ag<cr>
+nnoremap <Leader>f :FZF<cr>
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>q :set number<cr>
+nnoremap <Leader>w :set nonumber<cr>
+nnoremap <Leader>r :QuickRun<cr>
+nnoremap <Leader>t :tabe %<cr>
+" nnoremap <Leader>c :NERDCommenterToggle
 
-"上下移動の補完
 noremap j gj
 noremap k gk
-noremap <S-h> ^
-noremap <S-j> }
-noremap <S-k> {
-noremap <S-l> $
 noremap gr gT
 
-" ;でコマンド入力
 noremap : ;
 noremap ; :
 
-"agの設定
-if executable('ag')
-  set grepprg=ag\ --nogroup\ -iS
-  set grepformat=%f:%l:%m
-elseif executable('grep')
-  set grepprg=grep\ -Hnd\ skip\ -r
-  set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m
-else
-  set grepprg=internal
-endif
-
-augroup VimGrepAutoCmd
-  autocmd!
-  autocmd QuickFixCmdPost *grep* cwindow
-augroup END
-
-"vimの色
+" vim color
 colorscheme pablo
 hi clear
 set expandtab
 
-"改行文字とタブ文字の色設定（NonTextが改行、SpecialKeyがタブ）
+" new line -> NonText tab -> SpecialKey
 hi NonText guibg=NONE guifg=DarkGreen
 hi SpecialKey guibg=NONE guifg=#808080
 
-" 閉じ括弧が入力されたとき、対応する括弧を表示する
+" same brackets
 set showmatch
 
-" syntastic から rubocop を実行する設定
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
-let g:syntastic_ruby_checkers = ['rubocop']
-
-"ファイル名の表示
+" screen file name
 set statusline=%F
-" 変更チェック表示
+" change log
 set statusline+=%m
-" 読み込み専用かどうか表示
+" check read only
 set statusline+=%r
-" ヘルプページなら[HELP]と表示
+" if help page show [HELP]
 set statusline+=%h
-" プレビューウインドウなら[Prevew]と表示
+" if preview window show[Prevew]
 set statusline+=%w
-" これ以降は右寄せ表示
+" right justification
 set statusline+=%=
 " file encoding
 set statusline+=[ENC=%{&fileencoding}]
-" 現在行数/全行数
+" row number representation
 set statusline+=[LOW=%l/%L]
-" ステータスラインを常に表示(0:表示しない、1:2つ以上ウィンドウがある時だけ表示)
+" show status line (0:none、1:2 < show)
 set laststatus=2
-"検索文字の表示
+" search word
 set incsearch
-"検索のとき大文字小文字の区別をしない。
+" search case insentivie
 set ignorecase
-"コマンドラインモードの履歴を指定の数保存する。
+" gommand line history
 set history=500
-"ファイル名タブ補完
+" file name compelement
 set wildmode=list:longest
-"検索文字をハイライト表示
+" search high-light
 set hlsearch
-"新しい行のインデントを現在と同じにする。
+" same new line indent
 set autoindent
-"他で書き換えたら自動で読み直す
+" rewritten by others
 set autoread
-"カーソル行の背景色を変える
+" change background color of the cursor line
 set cursorline
-" クリップボードをWindowsと連携
 set clipboard=unnamed
-" スクロールするときに下が見える
+" see under 5 rows
 set scrolloff=5
-"backspaceの反応がない場合の対処
 set backspace=indent,eol,start
 
 " file encoding
@@ -223,6 +188,9 @@ let g:_rc_encoding_vim_loaded = 1
 set grepprg=ag\ --nogroup\ -uiS
 set grepformat=%f:%l:%m
 
+" use FZF in vim
+set rtp+=/usr/local/opt/fzf
+
 " use Ag -u
 command! -bang -nargs=* Agu call fzf#vim#ag(<q-args>, '-u', <bang>0)
 
@@ -231,3 +199,10 @@ set ts=2 sts=2 sw=2 et
 autocmd MyAutoCmd Filetype yaml setlocal ts=2 sts=2 sw=2 et
 
 set wildmenu wildmode=list:longest,full
+
+" syntastic execution rubocop
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
+
+" dbext profiles
+let g:dbext_default_profile_ysp = 'type=MYSQL:host=127.0.0.1:user=root:passwd=:dbname=ysp_cms_development'
