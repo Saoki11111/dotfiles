@@ -59,14 +59,14 @@ alias cdf='cd $(find * -type d | fzf --preview "tree -L 2 {}")'
 
 alias cdp='popd'
 
-alias reload='source ~/.zshrc'
+alias reload='source ~/dotfiles/.zshrc'
 alias re=reload
 alias execs='exec $SHELL -l'
 alias es=execs
 
-alias vzsh='vim ~/.zshrc'
-alias vvim='vim ~/.vimrc'
-alias vtmx='vim ~/.tmux.conf'
+alias vzsh='vim ~/dotfiles/.zshrc'
+alias vvim='vim ~/dotfiles/.vimrc'
+alias vtmx='vim ~/dotfiles/.tmux.conf'
 
 # git alias
 alias g='git'
