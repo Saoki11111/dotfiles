@@ -130,17 +130,33 @@ alias csh='ruby ~/workspace/ruby-work/ssh.rb'
 # command color
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# vcs_info
+# vcs_info をロードする
 autoload -Uz vcs_info
+
+# プロンプトを表示するたびに変数を展開
 setopt prompt_subst
+
+# true 作業ブランチの状態に応じて表示を変える
 zstyle ':vcs_info:git:*' check-for-changes true
+
+# commmit していない場合の表示
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+
+# add していない場合の表示
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+
+# デフォルトの状態の表示
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+
+# コンフリクトの状態
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
+
+# vcs_info を呼び出す
 precmd () { vcs_info }
 
-PROMPT="
-%F{098} %~ ${vcs_info_msg_0_}
+PROMPT='
+%F{045}%~ ${vcs_info_msg_0_}'"
 %F{177}[%n(%*%)]%f%k%{${reset_color}%}%# "
 
 # autoload -U promptinit; promptinit
