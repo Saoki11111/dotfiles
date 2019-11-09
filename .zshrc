@@ -61,6 +61,8 @@ alias cdp='popd'
 
 alias reload='source ~/dotfiles/.zshrc'
 alias re=reload
+alias reloadtmux='tmux source ~/dotfiles/.tmux.conf'
+alias ret=reloadtmux
 alias execs='exec $SHELL -l'
 alias es=execs
 
