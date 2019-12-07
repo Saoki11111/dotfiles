@@ -11,6 +11,9 @@ export HISTSIZE=100000
 export SAVEHIST=100000
 export HISTTIMEFORMAT='%d/%m/%y %T'
 
+autoload -Uz compinit
+compinit -i
+
 # color
 autoload -Uz colors
 colors
@@ -70,31 +73,10 @@ alias vzsh='vim ~/dotfiles/.zshrc'
 alias vvim='vim ~/dotfiles/.vimrc'
 alias vtmx='vim ~/dotfiles/.tmux.conf'
 
+# alias dh ='du -h'
+
 # git alias
 alias g='git'
-alias ga='git add'
-alias gb='git branch'
-alias gcm='git commit'
-alias gcb='git checkout -b'
-alias gco='git checkout'
-alias gd='git diff'
-alias gpush='git push'
-alias gpull='git pull'
-alias gl='git log'
-alias gcl='git clone'
-alias gf='git fetch'
-alias gr='git remote'
-alias gra='git remote add'
-alias grb='git rebase'
-alias grm='git rm'
-alias gst='git status'
-alias gsh='git show'
-alias ghs='git stash save'
-alias ghc='git stash clear'
-alias ghd='git stash drop'
-alias ghl='git stash list'
-alias ghp='git stash pop'
-alias ghu='git stash -u'
 
 # docker
 alias d='docker'
@@ -128,7 +110,7 @@ alias mcys='mycli --dsn ysp_cms_development_dsn'
 alias 1c='ccat ~/workspace/1pac.md'
 
 # ~/.ssh/config
-alias csh='ruby ~/workspace/ruby-work/ssh.rb'
+alias csh='ruby ~/workspace/ruby/ruby-work/ssh.rb'
 
 # command color
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

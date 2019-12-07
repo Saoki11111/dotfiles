@@ -1,4 +1,4 @@
-set encoding=utf-8
+" set encoding=utf-7
 scriptencoding utf-8
 
 augroup MyAutoCmd
@@ -16,6 +16,7 @@ nnoremap T :NERDTree<cr>
 nnoremap <Leader>a :Ag<cr>
 nnoremap <Leader>f :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>l :BLines<cr>
 nnoremap <Leader>q :set number<cr>
 nnoremap <Leader>w :set nonumber<cr>
 nnoremap <Leader>r :QuickRun<cr>
@@ -203,3 +204,16 @@ set wildmenu wildmode=list:longest,full
 " syntastic execution rubocop
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
+
+" vimconfig
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
