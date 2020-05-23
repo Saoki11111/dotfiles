@@ -5,6 +5,7 @@ setopt auto_pushd
 set clipboard+=unnamed
 
 eval "$(anyenv init -)"
+eval "$(nodenv init -)"
 
 HISTFILE=~/.histfile
 export HISTSIZE=100000
@@ -54,6 +55,8 @@ alias v='vim'
 alias vi='vim'
 alias diff='colordiff'
 
+alias sed='gsed'
+
 alias t='tmux'
 
 alias -g G='| grep'
@@ -73,9 +76,10 @@ alias vzsh='vim ~/dotfiles/.zshrc'
 alias vvim='vim ~/dotfiles/.vimrc'
 alias vtmx='vim ~/dotfiles/.tmux.conf'
 
-# alias dh ='du -h'
+alias o='open'
+alias oc='open -a 'Google\ Chrome''
 
-# git alias
+# alias dh ='du -h'
 alias g='git'
 
 # docker
@@ -93,10 +97,11 @@ alias dre='docker rm `docker ps -f status=exited -q`'
 alias drin='docker rmi $(docker images -f "dangling=true" -q)'
 
 # vi keybind
-bindkey -v
+bindkey -e
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export LANG=en_US.UTF-8
+export LANG=ja_JP.UTF-8
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -111,6 +116,7 @@ alias 1c='ccat ~/workspace/1pac.md'
 
 # ~/.ssh/config
 alias csh='ruby ~/workspace/ruby/ruby-work/ssh.rb'
+alias cho='ruby ~/workspace/ruby/ruby-work/hosts.rb'
 
 # command color
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -137,6 +143,9 @@ zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 # コンフリクトの状態
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
+# complete case-insensitive
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
 # vcs_info を呼び出す
 precmd () { vcs_info }
 
@@ -144,5 +153,22 @@ PROMPT='
 %F{045}%~ ${vcs_info_msg_0_}'"
 %F{177}[%n(%*%)]%f%k%{${reset_color}%}%# "
 
-# autoload -U promptinit; promptinit
-# prompt pure
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share//zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+
+autoload -Uz add-zsh-hook
+
+function rename_tmux_window() {
+   if [ $TERM = "screen" ]; then
+       local current_path=`pwd | sed -e s/\ /_/g`
+       local current_dir=`basename $current_path`
+       tmux rename-window $current_dir
+   fi
+}
+
+add-zsh-hook precmd rename_tmux_window
+
+export PATH="/usr/local/sbin:$PATH"

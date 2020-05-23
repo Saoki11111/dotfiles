@@ -1,11 +1,12 @@
 " set encoding=utf-7
-scriptencoding utf-8
+
+set encoding=utf-8
 
 augroup MyAutoCmd
   autocmd!
 augroup END
 
-" allow syntax high-light
+" allow syntax high-light filetype plugin indent on
 filetype plugin indent on
 syntax enable
 
@@ -13,6 +14,8 @@ syntax enable
 let mapleader = "\<Space>"
 noremap <Leader>v 0v$h
 nnoremap T :NERDTree<cr>
+" nnoremap <Leader>z :VimFiler<cr>
+nnoremap <Leader>z :Vaffle<cr>
 nnoremap <Leader>a :Ag<cr>
 nnoremap <Leader>f :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
@@ -21,6 +24,7 @@ nnoremap <Leader>q :set number<cr>
 nnoremap <Leader>w :set nonumber<cr>
 nnoremap <Leader>r :QuickRun<cr>
 nnoremap <Leader>t :tabe %<cr>
+nnoremap <Leader>e :IndentLinesToggle<cr>
 " nnoremap <Leader>c :NERDCommenterToggle
 
 noremap j gj
@@ -30,10 +34,25 @@ noremap gr gT
 noremap : ;
 noremap ; :
 
+let g:user_emmet_leader_key='<c-t>'
+
+" 全角スペースの背景を白に変更
+autocmd Colorscheme * highlight FullWidthSpace ctermbg=white
+autocmd VimEnter * match FullWidthSpace /　/
 " vim color
 colorscheme pablo
 hi clear
+
+" タブ入力を複数の空白入力に置き換える
 set expandtab
+" 画面上でタブ文字が占める幅
+set tabstop=2
+" 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set softtabstop=2
+" 改行時に前の行のインデントを継続する
+set autoindent
+" smartindentで増減する幅
+set shiftwidth=2
 
 " new line -> NonText tab -> SpecialKey
 hi NonText guibg=NONE guifg=DarkGreen
@@ -71,8 +90,6 @@ set wildmode=list:longest
 " search high-light
 set hlsearch
 " same new line indent
-set autoindent
-" rewritten by others
 set autoread
 " change background color of the cursor line
 set cursorline
@@ -123,12 +140,12 @@ endif
 " The automatic recognition of the character code."{{{
 if !exists('did_encoding_settings') && has('iconv')
   let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
+  " let s:enc_jis = 'iso-2022-jp'
 
   " Does iconv support JIS X 0213?
   if iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'euc-jisx0213,euc-jp'
-    let s:enc_jis = 'iso-2022-jp-3'
+    " let s:enc_jis = 'iso-2022-jp-3'
   endif
 
   " Build encodings.
@@ -137,7 +154,7 @@ if !exists('did_encoding_settings') && has('iconv')
     let &fileencodings .= ',' . 'ucs-2le'
     let &fileencodings .= ',' . 'ucs-2'
   endif
-  let &fileencodings .= ',' . s:enc_jis
+  " let &fileencodings .= ',' . s:enc_jis
   let &fileencodings .= ',' . 'utf-8'
 
   if &encoding ==# 'utf-8'
@@ -154,7 +171,7 @@ if !exists('did_encoding_settings') && has('iconv')
   let &fileencodings .= ',' . 'cp20932'
 
   unlet s:enc_euc
-  unlet s:enc_jis
+  " unlet s:enc_jis
 
   let did_encoding_settings = 1
 endif
@@ -201,9 +218,9 @@ autocmd MyAutoCmd Filetype yaml setlocal ts=2 sts=2 sw=2 et
 
 set wildmenu wildmode=list:longest,full
 
-" syntastic execution rubocop
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
-let g:syntastic_ruby_checkers = ['rubocop']
+" " syntastic execution rubocop
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+" let g:syntastic_ruby_checkers = ['rubocop']
 
 " vimconfig
 augroup vimrc-local
@@ -217,3 +234,9 @@ function! s:vimrc_local(loc)
     source `=i`
   endfor
 endfunction
+
+" 行番号の色を設定
+hi LineNr ctermbg=239 ctermfg=97
+hi CursorLineNr ctermbg=99 ctermfg=0
+set cursorline
+hi clear CursorLine
