@@ -1,9 +1,9 @@
-cp -r ./.vim ~/
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
 
-cp ./.vimrc ~/
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
 
-cp -r ./.bash ~/
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
-cp ./.bashrc ~/
+ln -sf ~/dotfiles/.gitignore_global ~/.gitignore_global
 
-cp ./.screenrc ~/
+ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
