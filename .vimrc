@@ -97,6 +97,8 @@ set clipboard=unnamed
 " see under 5 rows
 set scrolloff=5
 set backspace=indent,eol,start
+" no set swp
+set noswapfile
 
 " file encoding
 if has('g:_rc_encoding_vim_loaded') && g:_rc_encoding_vim_loaded

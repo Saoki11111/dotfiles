@@ -65,6 +65,8 @@ alias cdf='cd $(find * -type d | fzf --preview "tree -L 2 {}")'
 
 alias cdp='popd'
 
+alias cdpr='cd `git rev-parse --show-toplevel`'
+
 alias reload='source ~/dotfiles/.zshrc'
 alias re=reload
 alias reloadtmux='tmux source ~/dotfiles/.tmux.conf'
@@ -79,6 +81,9 @@ alias vtmx='vim ~/dotfiles/.tmux.conf'
 alias o='open'
 alias oc='open -a 'Google\ Chrome''
 
+# TODO
+# alias ssh='~/bin/ssh-change-bg'
+
 # alias dh ='du -h'
 alias g='git'
 
@@ -92,6 +97,7 @@ alias dcu='docker-compose up'
 alias dce='docker-compose exec'
 alias dc='docker-compose'
 alias dcd='docker-compose down'
+alias dcr='docker-compose run'
 alias dcdr='docker-compose down --rmi all'
 alias dre='docker rm `docker ps -f status=exited -q`'
 alias drin='docker rmi $(docker images -f "dangling=true" -q)'
@@ -172,3 +178,5 @@ function rename_tmux_window() {
 add-zsh-hook precmd rename_tmux_window
 
 export PATH="/usr/local/sbin:$PATH"
+
+export GIT_PAGER="LESSCHARSET=utf-8 less"
