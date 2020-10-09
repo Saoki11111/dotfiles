@@ -1,0 +1,40 @@
+[user]
+	name = Saoki11111
+	email = t.aoki11111@gmail.com
+[core]
+	excludesfile = /Users/cook.aoki/.gitignore_global
+	pager = LESSCHARSET=utf-8 less
+	quotepath = false
+[fetch]
+	prune = true
+[alias]
+  # global-alias
+#  delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\*|develop|master'|xargs git branch -d; };f"
+  openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
+  export-diff-master = "!f() { git archive --format=zip HEAD `git diff master --name-only --diff-filter=AMCR` -o archive.zip; }; f"
+  # git-alias
+  co = checkout
+  cl = clone
+	st = status
+  e  = config --global -e
+  b  = branch --sort=authordate
+  a  = add
+  cm = commit -m
+  df = diff
+  l  = log
+  lo = log --oneline -n
+  f  = fetch --prune --all
+  sh = stash
+  sp = stash pop
+  shm = stash save 'mysettings' 
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/cook.aoki/.stCommitMsg
+[remote "origin"]
+	url = https://github.com/Saoki11111/dotfiles.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
