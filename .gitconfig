@@ -33,8 +33,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[commit]
-	template = /Users/cook.aoki/.stCommitMsg
 [remote "origin"]
 	url = https://github.com/Saoki11111/dotfiles.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
