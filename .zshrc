@@ -84,7 +84,7 @@ alias oc='open -a 'Google\ Chrome''
 # TODO
 # alias ssh='~/bin/ssh-change-bg'
 
-# alias dh ='du -h'
+alias dh='du -h'
 alias g='git'
 
 # docker
