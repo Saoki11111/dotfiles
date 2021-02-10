@@ -6,6 +6,7 @@ set clipboard+=unnamed
 
 eval "$(anyenv init -)"
 eval "$(nodenv init -)"
+eval "$(pyenv init -)"
 
 HISTFILE=~/.histfile
 export HISTSIZE=100000
@@ -102,7 +103,7 @@ alias dcdr='docker-compose down --rmi all'
 alias dre='docker rm `docker ps -f status=exited -q`'
 alias drin='docker rmi $(docker images -f "dangling=true" -q)'
 
-# vi keybind
+# emacs keybind
 bindkey -e
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -180,3 +181,17 @@ add-zsh-hook precmd rename_tmux_window
 export PATH="/usr/local/sbin:$PATH"
 
 export GIT_PAGER="LESSCHARSET=utf-8 less"
+
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+function undot(){
+    /usr/bin/zip --delete $@ "*__MACOSX*" "*.DS_Store"
+}
