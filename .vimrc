@@ -16,7 +16,7 @@ noremap <Leader>v 0v$h
 nnoremap T :NERDTree<cr>
 " nnoremap <Leader>z :VimFiler<cr>
 nnoremap <Leader>z :Vaffle<cr>
-nnoremap <Leader>a :Ag<cr>
+nnoremap <Leader>a :Agu<cr>
 nnoremap <Leader>f :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>l :BLines<cr>
@@ -26,6 +26,24 @@ nnoremap <Leader>r :QuickRun<cr>
 nnoremap <Leader>t :tabe %<cr>
 nnoremap <Leader>e :IndentLinesToggle<cr>
 " nnoremap <Leader>c :NERDCommenterToggle
+
+ "quick chenge window size
+"ウィンドウを下に大きくする Ctrl-E + j
+"上に... Ctrl-E + k
+"左に... Ctrl-E + h
+"右に... Ctrl-E + l 
+nnoremap [winsize] <Nop>
+nmap <C-E> [winsize]
+nnoremap [winsize]k :resize -3<CR>
+nnoremap [winsize]j :resize +3<CR>
+nnoremap [winsize]h :vertical resize -10<CR>   
+nnoremap [winsize]l :vertical resize +10<CR>
+
+"indentline"
+let g:indentLine_color_term =239
+let g:indentLine_color_gui = '#708090'
+let g:indentLine_char = '¦'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 noremap j gj
 noremap k gk
