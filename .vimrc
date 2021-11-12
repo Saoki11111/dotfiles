@@ -34,12 +34,12 @@ nnoremap <Leader>d :StripWhitespace<cr>
 "ウィンドウを下に大きくする Ctrl-E + j
 "上に... Ctrl-E + k
 "左に... Ctrl-E + h
-"右に... Ctrl-E + l 
+"右に... Ctrl-E + l
 nnoremap [winsize] <Nop>
 nmap <C-E> [winsize]
 nnoremap [winsize]k :resize -3<CR>
 nnoremap [winsize]j :resize +3<CR>
-nnoremap [winsize]h :vertical resize -10<CR>   
+nnoremap [winsize]h :vertical resize -10<CR>
 nnoremap [winsize]l :vertical resize +10<CR>
 
 "indentline"
