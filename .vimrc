@@ -14,6 +14,7 @@ syntax enable
 let mapleader = "\<Space>"
 noremap <Leader>v 0v$h
 nnoremap T :NERDTree<cr>
+nnoremap <C-n> :NERDTreeToggle<cr>
 " nnoremap <Leader>z :VimFiler<cr>
 nnoremap <Leader>z :Vaffle<cr>
 nnoremap <Leader>a :Agu<cr>
@@ -285,4 +286,5 @@ call plug#begin('~/.vim/plugged')
   Plug 'jiangmiao/auto-pairs'
   Plug 'mattn/emmet-vim'
   Plug 'thinca/vim-quickrun'
+  Plug 'simeji/winresizer'
 call plug#end()
