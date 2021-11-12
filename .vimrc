@@ -24,7 +24,10 @@ nnoremap <Leader>q :set number<cr>
 nnoremap <Leader>w :set nonumber<cr>
 nnoremap <Leader>r :QuickRun<cr>
 nnoremap <Leader>t :tabe %<cr>
-nnoremap <Leader>e :IndentLinesToggle<cr>
+" nnoremap <Leader>e :IndentLinesToggle<cr>
+nnoremap <Leader>e :IndentGuidesToggle<cr>
+nnoremap <Leader>d :StripWhitespace<cr>
+
 " nnoremap <Leader>c :NERDCommenterToggle
 
  "quick chenge window size
@@ -44,6 +47,14 @@ let g:indentLine_color_term =239
 let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '¦'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+"vim-indent-guides"
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=lightgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
+set ts=1 sw=1 et
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
 noremap j gj
 noremap k gk
@@ -260,3 +271,18 @@ hi LineNr ctermbg=239 ctermfg=97
 hi CursorLineNr ctermbg=99 ctermfg=0
 set cursorline
 hi clear CursorLine
+
+call plug#begin('~/.vim/plugged')
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'rking/ag.vim',
+  Plug 'cocopon/vaffle.vim'
+  Plug 'Yggdroot/indentLine'
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'tomtom/tcomment_vim'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'mattn/emmet-vim'
+  Plug 'thinca/vim-quickrun'
+call plug#end()
