@@ -20,7 +20,7 @@ compinit -i
 autoload -Uz colors
 colors
 
-# screen japanese file name 
+# screen japanese file name
 setopt print_eight_bit
 
 # Share history with shells launched simultaneously
@@ -51,6 +51,7 @@ alias lk='ls -lk'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias mkdir='mkdir -p'
 
 alias v='vim'
 alias vi='vim'
@@ -62,7 +63,7 @@ alias t='tmux'
 
 alias -g G='| grep'
 
-alias cdf='cd $(find * -type d | fzf --preview "tree -L 2 {}")' 
+alias cdf='cd $(find * -type d | fzf --preview "tree -L 2 {}")'
 
 alias cdp='popd'
 
