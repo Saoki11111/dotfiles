@@ -287,4 +287,5 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'
   Plug 'thinca/vim-quickrun'
   Plug 'simeji/winresizer'
+  Plug 'nelsyeung/twig.vim'
 call plug#end()
