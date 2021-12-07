@@ -159,7 +159,7 @@ precmd () { vcs_info }
 
 PROMPT='
 %F{045}%~ ${vcs_info_msg_0_}'"
-%F{177}[%n(%*%)]%f%k%{${reset_color}%}%# "
+%F{177}[local(%*%)]%f%k%{${reset_color}%}$ "
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share//zsh-autosuggestions/zsh-autosuggestions.zsh
