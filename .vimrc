@@ -273,6 +273,13 @@ hi CursorLineNr ctermbg=99 ctermfg=0
 set cursorline
 hi clear CursorLine
 
+"Ignore whitespace with vimdiff
+if &diff
+  set diffopt-=internal
+  set diffopt+=iwhite
+endif
+
+" plugin
 call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -288,4 +295,5 @@ call plug#begin('~/.vim/plugged')
   Plug 'thinca/vim-quickrun'
   Plug 'simeji/winresizer'
   Plug 'nelsyeung/twig.vim'
+  Plug 'qpkorr/vim-renamer'
 call plug#end()
