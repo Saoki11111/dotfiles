@@ -196,12 +196,3 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 function undot(){
     /usr/bin/zip --delete $@ "*__MACOSX*" "*.DS_Store"
 }
-
-# local の不要 branch の削除(main, master, develop を除く)
-PROTECT_BRANCHES='main|master|develop'
-
-function git-delete-merged-branch() {
-    git fetch --prune
-    git branch --merged | egrep -v "\*|${PROTECT_BRANCHES}" | xargs git branch -d
-}
-alias gdb='git-delete-merged-branch'

@@ -9,7 +9,10 @@
 	prune = true
 [alias]
 # global-alias
-#  delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\*|develop|master'|xargs git branch -d; };f"
+  delete-merged-branch = "!f() { \
+    git fetch --prune; git branch --merged | egrep -v '\\*|main|master|develop' | xargs git branch -d; \
+    }; f"
+  db = delete-merged-branch
   openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
   export-diff-master = "!f() { git archive --format=zip HEAD `git diff master --name-only --diff-filter=AMCR` -o archive.zip; }; f"
   # git-alias
