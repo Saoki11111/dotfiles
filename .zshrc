@@ -204,3 +204,4 @@ function git-delete-merged-branch() {
     git fetch --prune
     git branch --merged | egrep -v "\*|${PROTECT_BRANCHES}" | xargs git branch -d
 }
+alias gdb='git-delete-merged-branch'
