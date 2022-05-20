@@ -129,6 +129,8 @@ set scrolloff=5
 set backspace=indent,eol,start
 " no set swp
 set noswapfile
+" line number
+set number
 
 " file encoding
 if has('g:_rc_encoding_vim_loaded') && g:_rc_encoding_vim_loaded

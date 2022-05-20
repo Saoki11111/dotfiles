@@ -119,8 +119,8 @@ function chpwd() { ls; echo -ne "\033]0;$(pwd | rev | awk -F \/ '{print "/"$1"/"
 # mycli dsn
 alias mcys='mycli --dsn ysp_cms_development_dsn'
 
-# 1pac
-alias 1c='ccat ~/workspace/1pac.md'
+# md
+alias 1c='ccat ~/workspace/tel.md'
 
 # ~/.ssh/config
 alias csh='ruby ~/workspace/ruby/ruby-work/ssh.rb'
@@ -195,4 +195,12 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 function undot(){
     /usr/bin/zip --delete $@ "*__MACOSX*" "*.DS_Store"
+}
+
+# local の不要 branch の削除(main, master, develop を除く)
+PROTECT_BRANCHES='main|master|develop'
+
+function git-delete-merged-branch() {
+    git fetch --prune
+    git branch --merged | egrep -v "\*|${PROTECT_BRANCHES}" | xargs git branch -d
 }
