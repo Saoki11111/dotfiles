@@ -28,6 +28,8 @@ nnoremap <Leader>t :tabe %<cr>
 " nnoremap <Leader>e :IndentLinesToggle<cr>
 nnoremap <Leader>e :IndentGuidesToggle<cr>
 nnoremap <Leader>d :StripWhitespace<cr>
+" ale toggle
+nnoremap <Leader>1 :ALEToggle<cr>
 
 " nnoremap <Leader>c :NERDCommenterToggle
 
@@ -281,6 +283,7 @@ if &diff
   set diffopt+=iwhite
 endif
 
+
 " plugin
 call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -298,4 +301,5 @@ call plug#begin('~/.vim/plugged')
   Plug 'simeji/winresizer'
   Plug 'nelsyeung/twig.vim'
   Plug 'qpkorr/vim-renamer'
+  Plug 'dense-analysis/ale'
 call plug#end()
