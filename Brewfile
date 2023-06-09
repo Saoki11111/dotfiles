@@ -13,7 +13,6 @@ brew "go"
 brew "httpd", restart_service: true
 brew "hub"
 brew "imagemagick@6", link: true
-brew "mysql@5.6", restart_service: true
 brew "nodenv"
 brew "pyenv"
 brew "redis"
@@ -23,3 +22,5 @@ brew "tmux"
 brew "tree"
 brew "volt"
 brew "yarn"
+brew "zsh-syntax-highlighting"
+brew "zsh-autosuggestions"
