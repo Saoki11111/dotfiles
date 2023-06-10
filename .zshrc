@@ -126,9 +126,6 @@ alias 1c='ccat ~/workspace/tel.md'
 alias csh='ruby ~/workspace/ruby/ruby-work/ssh.rb'
 alias cho='ruby ~/workspace/ruby/ruby-work/hosts.rb'
 
-# command color
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # vcs_info
 # vcs_info をロードする
 autoload -Uz vcs_info
@@ -161,8 +158,8 @@ PROMPT='
 %F{045}%~ ${vcs_info_msg_0_}'"
 %F{177}[local(%*%)]%f%k%{${reset_color}%}$ "
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share//zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
