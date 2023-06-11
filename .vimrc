@@ -283,7 +283,6 @@ if &diff
   set diffopt+=iwhite
 endif
 
-
 " plugin
 call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
