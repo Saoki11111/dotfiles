@@ -54,3 +54,11 @@ $ ./install.sh
 - iTerm2 「Preferences（環境設定）」
 - 「Text（テキスト）」フォントの設定を編集
 - 「Change Font（フォントの変更）」ボタンをクリックし、Powerlineフォント（例："Meslo LG S Regular for Powerline"）を選択
+
+## hammerspoon のダウンロード
+
+- https://www.hammerspoon.org/
+
+## ファイルのコピー
+
+$ ./migrate.sh
