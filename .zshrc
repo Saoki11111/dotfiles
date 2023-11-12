@@ -193,3 +193,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 function undot(){
     /usr/bin/zip --delete $@ "*__MACOSX*" "*.DS_Store"
 }
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

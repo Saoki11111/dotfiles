@@ -8,7 +8,7 @@ augroup END
 
 " allow syntax high-light filetype plugin indent on
 filetype plugin indent on
-syntax enable
+" syntax enable
 
 " use space for <Leader>
 let mapleader = "\<Space>"
@@ -25,8 +25,8 @@ nnoremap <Leader>q :set number<cr>
 nnoremap <Leader>w :set nonumber<cr>
 nnoremap <Leader>r :QuickRun<cr>
 nnoremap <Leader>t :tabe %<cr>
-" nnoremap <Leader>e :IndentLinesToggle<cr>
-nnoremap <Leader>e :IndentGuidesToggle<cr>
+nnoremap <Leader>e :IndentLinesToggle<cr>
+" nnoremap <Leader>e :IndentGuidesToggle<cr>
 nnoremap <Leader>d :StripWhitespace<cr>
 " ale toggle
 nnoremap <Leader>1 :ALEToggle<cr>
@@ -49,7 +49,7 @@ nnoremap [winsize]l :vertical resize +10<CR>
 let g:indentLine_color_term =239
 let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '¦'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 "vim-indent-guides"
 let g:indent_guides_auto_colors = 0
@@ -124,7 +124,7 @@ set hlsearch
 " same new line indent
 set autoread
 " change background color of the cursor line
-set cursorline
+" set cursorline
 set clipboard=unnamed
 " see under 5 rows
 set scrolloff=5
@@ -274,7 +274,7 @@ endfunction
 " 行番号の色を設定
 hi LineNr ctermbg=239 ctermfg=97
 hi CursorLineNr ctermbg=99 ctermfg=0
-set cursorline
+" set cursorline
 hi clear CursorLine
 
 "Ignore whitespace with vimdiff
@@ -292,13 +292,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'cocopon/vaffle.vim'
   Plug 'Yggdroot/indentLine'
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'nathanaelkane/vim-indent-guides'
+  " Plug 'nathanaelkane/vim-indent-guides'
   Plug 'tomtom/tcomment_vim'
-  Plug 'jiangmiao/auto-pairs'
+  " Plug 'jiangmiao/auto-pairs'
   Plug 'mattn/emmet-vim'
   Plug 'thinca/vim-quickrun'
   Plug 'simeji/winresizer'
   Plug 'nelsyeung/twig.vim'
   Plug 'qpkorr/vim-renamer'
-  Plug 'dense-analysis/ale'
+  " Plug 'dense-analysis/ale'
 call plug#end()
