@@ -1,5 +1,3 @@
-" set encoding=utf-7
-
 set encoding=utf-8
 
 augroup MyAutoCmd
@@ -31,13 +29,7 @@ nnoremap <Leader>d :StripWhitespace<cr>
 " ale toggle
 nnoremap <Leader>1 :ALEToggle<cr>
 
-" nnoremap <Leader>c :NERDCommenterToggle
-
  "quick chenge window size
-"ウィンドウを下に大きくする Ctrl-E + j
-"上に... Ctrl-E + k
-"左に... Ctrl-E + h
-"右に... Ctrl-E + l
 nnoremap [winsize] <Nop>
 nmap <C-E> [winsize]
 nnoremap [winsize]k :resize -3<CR>
@@ -45,11 +37,14 @@ nnoremap [winsize]j :resize +3<CR>
 nnoremap [winsize]h :vertical resize -10<CR>
 nnoremap [winsize]l :vertical resize +10<CR>
 
+" autocmd VimEnter * execute 'Defx'
+" nnoremap <silent> <Leader>i :<C-u> Defx <CR>
+
 "indentline"
 let g:indentLine_color_term =239
 let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '¦'
-" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 "vim-indent-guides"
 let g:indent_guides_auto_colors = 0
@@ -124,7 +119,6 @@ set hlsearch
 " same new line indent
 set autoread
 " change background color of the cursor line
-" set cursorline
 set clipboard=unnamed
 " see under 5 rows
 set scrolloff=5
@@ -294,11 +288,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'ntpeters/vim-better-whitespace'
   " Plug 'nathanaelkane/vim-indent-guides'
   Plug 'tomtom/tcomment_vim'
-  " Plug 'jiangmiao/auto-pairs'
+  Plug 'jiangmiao/auto-pairs'
   Plug 'mattn/emmet-vim'
   Plug 'thinca/vim-quickrun'
   Plug 'simeji/winresizer'
-  Plug 'nelsyeung/twig.vim'
   Plug 'qpkorr/vim-renamer'
-  " Plug 'dense-analysis/ale'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'alvan/vim-closetag'
+  Plug 'neoclide/coc.nvim'
 call plug#end()

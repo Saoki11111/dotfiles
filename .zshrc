@@ -197,3 +197,5 @@ function undot(){
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init --no-rehash -)"
