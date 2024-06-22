@@ -54,6 +54,7 @@ alias mv='mv -i'
 alias mkdir='mkdir -p'
 
 alias v='vim'
+alias n='nvim'
 alias vi='vim'
 alias diff='colordiff'
 
