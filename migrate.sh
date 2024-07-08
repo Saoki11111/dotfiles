@@ -10,5 +10,7 @@ ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 
 ln -sf ~/dotfiles/.hammerspoon ~/.hammerspoon
 
-mkdir -p ~/.config/nvim/init.vim
-ln -sf ~/dotfiles/.vimrc ~/.config/nvim/init.vim
+mkdir -p ~/.config
+ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
+
+echo "configuration has been migrated successfully."
