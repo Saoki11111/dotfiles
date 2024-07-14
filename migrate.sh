@@ -11,6 +11,7 @@ ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/.hammerspoon ~/.hammerspoon
 
 mkdir -p ~/.config
-ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
+ln -sf ~/dotfiles/.config/nvim ~/.config/
+ln -sf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
 echo "configuration has been migrated successfully."

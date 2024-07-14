@@ -195,8 +195,10 @@ function undot(){
     /usr/bin/zip --delete $@ "*__MACOSX*" "*.DS_Store"
 }
 
-
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init --no-rehash -)"
+
+# Load starship
+eval "$(starship init zsh)"
