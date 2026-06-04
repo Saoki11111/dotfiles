@@ -58,6 +58,22 @@ alias n='nvim'
 alias vi='vim'
 alias diff='colordiff'
 
+# Use Neovim for terminal tools such as Yazi.
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+# Start Yazi and move the shell to its final directory when it exits.
+function y() {
+  local tmp cwd
+  tmp="$(mktemp -t yazi-cwd.XXXXXX)" || return
+  command yazi "$@" --cwd-file="$tmp"
+  cwd="$(command cat -- "$tmp")"
+  if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
+    builtin cd -- "$cwd"
+  fi
+  command rm -f -- "$tmp"
+}
+
 alias sed='gsed'
 
 alias t='tmux'
