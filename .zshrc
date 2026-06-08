@@ -2,6 +2,9 @@
 setopt correct
 setopt auto_pushd
 
+# Homebrew on Apple Silicon
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 set clipboard+=unnamed
 
 eval "$(anyenv init -)"
@@ -58,6 +61,22 @@ alias n='nvim'
 alias vi='vim'
 alias diff='colordiff'
 
+# Use Neovim for terminal tools such as Yazi.
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+# Start Yazi and move the shell to its final directory when it exits.
+function y() {
+  local tmp cwd
+  tmp="$(mktemp -t yazi-cwd.XXXXXX)" || return
+  command yazi "$@" --cwd-file="$tmp"
+  cwd="$(command cat -- "$tmp")"
+  if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
+    builtin cd -- "$cwd"
+  fi
+  command rm -f -- "$tmp"
+}
+
 alias sed='gsed'
 
 alias t='tmux'
@@ -89,6 +108,10 @@ alias oc='open -a 'Google\ Chrome''
 
 alias dh='du -h'
 alias g='git'
+
+# CC PoC daily-project workflow
+alias kaisi='python3 ~/workspace/CC_PoC_4tasks/scripts/kaisi.py'
+alias taikin='python3 ~/workspace/CC_PoC_4tasks/scripts/taikin.py'
 
 # docker
 alias d='docker'
@@ -195,6 +218,23 @@ function undot(){
     /usr/bin/zip --delete $@ "*__MACOSX*" "*.DS_Store"
 }
 
+function tgemini() {
+    local session="${1:-ai-dev}"
+    if tmux has-session -t "$session" 2>/dev/null; then
+        tmux attach -t "$session"
+        return
+    fi
+
+    tmux new-session -d -s "$session" -c "$PWD"
+    tmux split-window -t "$session":0 -v -p 40 -c "$PWD" "gemini"
+    tmux swap-pane -s 0 -t 1
+    tmux select-pane -t "$session":0.1
+    tmux attach -t "$session"
+}
+alias tg='tgemini'
+alias taider='tgemini'
+alias tainder='tgemini'
+
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 export PATH="$HOME/.nodenv/bin:$PATH"
@@ -202,3 +242,12 @@ eval "$(nodenv init --no-rehash -)"
 
 # Load starship
 eval "$(starship init zsh)"
+
+# Created by `pipx` on 2026-05-30 02:40:24
+export PATH="$PATH:/Users/shuaoki/.local/bin"
+alias bgm='/Users/shuaoki/workspace/daily-notes/scripts/youtube-bgm.sh'
+alias bgm='/Users/shuaoki/workspace/daily-notes/scripts/bgm-manager.sh'
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/shuaoki/.local/bin:$PATH"
