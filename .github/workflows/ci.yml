@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate dotfiles
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install syntax checkers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends zsh lua5.4
+
+      - name: Check Zsh syntax
+        run: zsh -n .zshrc
+
+      - name: Check shell script syntax
+        run: |
+          bash -n migrate.sh
+          bash -n migrate_vim.sh
+
+      - name: Check Lua syntax
+        run: find .config/nvim -name '*.lua' -print0 | xargs -0 -r luac5.4 -p
+
+      - name: Check JSON syntax
+        run: |
+          python3 -m json.tool .config/nvim/coc-settings.json >/dev/null
+          python3 -m json.tool .config/nvim/lazy-lock.json >/dev/null
